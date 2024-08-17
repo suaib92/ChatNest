@@ -14,10 +14,8 @@ const path = require('path');
 
 dotenv.config();
 
-// Connect to MongoDB
 const connectWithRetry = () => {
   mongoose.connect(process.env.MONGO_URL, {
-   
     connectTimeoutMS: 10000,
     serverSelectionTimeoutMS: 10000,
   })
@@ -31,6 +29,8 @@ const connectWithRetry = () => {
 connectWithRetry();
 
 
+
+
 const jwtSecret = process.env.JWT_SECRET;
 const bcryptSalt = bcrypt.genSaltSync(10);
 
@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:5173',
+  origin: 'https://chat-nest-one.vercel.app',
 }));
 
 const storage = multer.diskStorage({
