@@ -29,7 +29,9 @@ const connectWithRetry = () => {
 connectWithRetry();
 
 
-
+const privateKey = fs.readFileSync('path/to/your/private-key.pem', 'utf8');
+const certificate = fs.readFileSync('path/to/your/certificate.pem', 'utf8');
+const credentials = { key: privateKey, cert: certificate };
 
 const jwtSecret = process.env.JWT_SECRET;
 const bcryptSalt = bcrypt.genSaltSync(10);
